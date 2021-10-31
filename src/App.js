@@ -1,33 +1,21 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { fetchEvents, fetchWeather } from "./utils/api";
-import {
-  filterAndSortByDate,
-  sortByCity,
-  getWeather,
-  getForecasts,
-} from "./utils/dataSorter";
+import { fetchEventAndForecastData } from "./utils/dataSorter";
 
 const App = () => {
-  const [events, setEvents] = useState([]);
+  const [eventsAndForecasts, setEventsAndForecasts] = useState([]);
 
   useEffect(() => {
-    const getEvents = async () => {
-      const eventData = await fetchEvents();
+    const getEventsAndForecasts = async () => {
+      const eventAndForecastData = await fetchEventAndForecastData();
       // console.log("events in effect", eventData);
 
-      setEvents(eventData);
+      setEventsAndForecasts(eventAndForecastData);
     };
-    getEvents();
+    getEventsAndForecasts();
   }, []);
 
-  // console.log("events in App", events);
-  const filteredEvents = filterAndSortByDate(events);
-
-  const citySortedEvents = sortByCity(filteredEvents);
-
-  const { sortedEvents, weather } = getForecasts(citySortedEvents);
-
+  console.log("Events and Forecasts in app", eventsAndForecasts);
   return (
     <div className="App">
       <header className="App-header">Eventful Weather</header>

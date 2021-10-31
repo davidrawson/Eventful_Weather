@@ -15,32 +15,35 @@ export const fetchEvents = async () => {
   return data;
 };
 
-export const fetchWeather = async (city) => {
-  // console.log(city);
-  // const weatherReports = [];
-  const WEATHER_URL =
-    "http://localhost:8080/" +
-    `${process.env.REACT_APP_MAP_API_URL}${city}&appid=${process.env.REACT_APP_MAP_API_KEY}`;
+export const fetchForecasts = async (featuredCities) => {
+  const weatherForecasts = [];
+  console.log("Feat in api", featuredCities);
 
-  const response = await axios.get(WEATHER_URL);
+  // try {
+  for (let city of featuredCities) {
+    // if (!city) {
+    //   continue;
+    // }
+    console.log("City ", city);
+    const WEATHER_URL =
+      "http://localhost:8080/" +
+      `${process.env.REACT_APP_MAP_API_URL}${city}&appid=${process.env.REACT_APP_MAP_API_KEY}`;
 
-  if (response.status !== 200) {
-    throw new Error(`Problem getting weather data for ${city}.`);
+    const response = await axios.get(WEATHER_URL);
+
+    if (response.status !== 200) {
+      throw new Error(`Problem getting weather data for ${city}.`);
+    }
+
+    if (response.status === 404) {
+      console.log("Error city", city);
+      throw new Error(`Problem getting weather data for ${city}.`);
+    }
+    const data = await response.data.list;
+
+    weatherForecasts.push({ city, data });
   }
 
-  const data = await response.data.data;
-  console.log("data ", data);
-
-  return data;
-  // const fetchData = async () => {
-  //   await fetch(
-  //     `${process.env.REACT_MAP_API_URL}${city}&appid=${process.env.REACT_MAP_API_KEY}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       // setData(result);
-  //       console.log(result);
-  //     });
-  // };
-  // fetchData();
+  // console.log("data ", data);
+  return weatherForecasts;
 };
