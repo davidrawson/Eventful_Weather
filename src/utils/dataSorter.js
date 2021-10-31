@@ -9,7 +9,7 @@ export const fetchEventAndForecastData = async () => {
 
   const forecasts = await fetchForecasts(featuredCities);
 
-  return { eventsData, forecasts };
+  return { sortedEvents, forecasts };
 };
 
 const filterAndSortByDate = (events) => {
