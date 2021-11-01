@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
 code {
@@ -12,20 +13,10 @@ code {
     monospace;
 }
 
-/* borrowed */
-
-/* @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap"); */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  /* background: papayawhip; */
-  line-height: 1.5;
-  /* font-family: "Caveat", cursive; */
 }
 
 main {
@@ -81,20 +72,14 @@ main > h1 {
   top: 0;
   left: 0;
 }
-.card--city {
+.card--city .card--temp {
   text-transform: capitalize;
   color: darkkhaki;
   font-size: 2rem;
   font-weight: 700;
 }
 
-.card--image {
-  width: 150px;
-  display: block;
-  margin: auto;
-}
-
-.card--title {
+.card--title .card--description {
   font-size: 1.3rem;
   color: #dbca80;
 }
