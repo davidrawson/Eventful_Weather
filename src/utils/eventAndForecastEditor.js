@@ -3,7 +3,7 @@ export const trimEvent = (event) => {
     date: event.start.displaylocal,
     city: event.areas[0].title,
     title: event.summary,
-    // venue: event.venue.title,
+    venue: event.venue.title,
   };
   return trimmedEvent;
 };

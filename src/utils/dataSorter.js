@@ -5,11 +5,8 @@ export const fetchEventAndForecastData = async () => {
   const filteredEvents = filterAndSortByDate(eventsData);
   const sortedEvents = sortByCity(filteredEvents);
   const featuredCities = getFeaturedCities(sortedEvents);
-  console.log("Featured cvities", featuredCities);
 
   const forecasts = await fetchForecasts(featuredCities);
-
-  console.log("data sorter forecasts", forecasts);
 
   return { sortedEvents, forecasts };
 };
@@ -17,8 +14,6 @@ export const fetchEventAndForecastData = async () => {
 const filterAndSortByDate = (events) => {
   const FIVE_DAYS_IN_SECONDS = 432000;
   const NOW_IN_SECONDS = Date.now() / 1000;
-
-  // console.log("Events in sorter", events);
 
   const filteredEvents = events
     .filter(
@@ -32,7 +27,6 @@ const filterAndSortByDate = (events) => {
     .filter((event) => event.areas)
     .filter((event) => event.areas[0].title !== "Scotland");
 
-  // console.log("filtered events ", filteredEvents);
   return filteredEvents;
 };
 
@@ -65,21 +59,3 @@ const getFeaturedCities = (events) => {
 
   return featuredCities;
 };
-
-// export const getForecasts = (featuredCities) => {
-//   const getAForecast = async (city) => {
-//     const weatherData = await fetchWeather(city);
-//     console.log("weather in getWeather", weatherData);
-
-//     return weatherData;
-//   };
-
-//   const weatherForecasts = [];
-//   featuredCities.forEach((featuredCity) => {
-//     console.log("city", featuredCity);
-//     const weather = getAForecast(featuredCity);
-//     weatherForecasts.push({ featuredCity, weather });
-//   });
-//   console.log("weather forecasts", weatherForecasts);
-//   return weatherForecasts;
-// };

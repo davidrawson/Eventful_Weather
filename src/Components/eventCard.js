@@ -1,5 +1,3 @@
-// import { trimForecast } from "../utils/eventAndForecastEditor";
-
 const EventCard = (event, forecast) => {
   return (
     <div class="card" id="card">
