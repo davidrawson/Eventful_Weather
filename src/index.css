@@ -70,7 +70,7 @@ main > h1 {
   transform: scale(1.05);
 }
 
-.card--id {
+.card--date {
   background: #cebf7b;
   width: 3rem;
   color: #333;
@@ -81,7 +81,7 @@ main > h1 {
   top: 0;
   left: 0;
 }
-.card--name {
+.card--city {
   text-transform: capitalize;
   color: darkkhaki;
   font-size: 2rem;
@@ -94,7 +94,7 @@ main > h1 {
   margin: auto;
 }
 
-.card--details {
+.card--title {
   font-size: 1.3rem;
   color: #dbca80;
 }

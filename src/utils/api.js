@@ -17,7 +17,7 @@ export const fetchEvents = async () => {
 
 export const fetchForecasts = async (featuredCities) => {
   const weatherForecasts = [];
-  console.log("Feat in api", featuredCities);
+  // console.log("Feat in api", featuredCities);
 
   // try {
   for (let city of featuredCities) {
@@ -27,7 +27,7 @@ export const fetchForecasts = async (featuredCities) => {
     console.log("City ", city);
     const WEATHER_URL =
       "http://localhost:8080/" +
-      `${process.env.REACT_APP_MAP_API_URL}${city}&appid=${process.env.REACT_APP_MAP_API_KEY}`;
+      `${process.env.REACT_APP_MAP_API_URL}${city}&units=metric&appid=${process.env.REACT_APP_MAP_API_KEY}`;
 
     const response = await axios.get(WEATHER_URL);
 

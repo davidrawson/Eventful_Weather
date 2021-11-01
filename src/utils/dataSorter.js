@@ -9,6 +9,8 @@ export const fetchEventAndForecastData = async () => {
 
   const forecasts = await fetchForecasts(featuredCities);
 
+  console.log("data sorter forecasts", forecasts);
+
   return { sortedEvents, forecasts };
 };
 
@@ -16,7 +18,7 @@ const filterAndSortByDate = (events) => {
   const FIVE_DAYS_IN_SECONDS = 432000;
   const NOW_IN_SECONDS = Date.now() / 1000;
 
-  console.log("Events in sorter", events);
+  // console.log("Events in sorter", events);
 
   const filteredEvents = events
     .filter(
@@ -30,7 +32,7 @@ const filterAndSortByDate = (events) => {
     .filter((event) => event.areas)
     .filter((event) => event.areas[0].title !== "Scotland");
 
-  console.log("filtered events ", filteredEvents);
+  // console.log("filtered events ", filteredEvents);
   return filteredEvents;
 };
 

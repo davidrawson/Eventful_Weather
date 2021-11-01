@@ -9,9 +9,10 @@ export const trimEvent = (event) => {
 };
 
 export const trimForecast = (forecast) => {
+  console.log("forecast", forecast);
   const trimmedForecast = {
     temp: forecast.main.temp,
-    weather: forecast.weather.description,
+    weather: forecast.weather[0].description,
   };
   return trimmedForecast;
 };
